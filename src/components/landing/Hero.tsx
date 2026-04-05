@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button"
 import { CalculatorIcon, MicIcon, StarIcon } from "lucide-react";
-import { SignInButton } from "@clerk/nextjs";
+import { SignUpButton } from "@clerk/nextjs";
 function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden px-4 sm:px-8 md:-30">
@@ -26,26 +26,18 @@ function Hero() {
           <p className="text-lg max-w-90">
             Chat with our AI dental assistant for instant advice, book smart appointments, and
             get personalized care recommendations. Available 24/7. no waiting required.
-          </p>
+          </p>          <div className="flex gap-4">
+            <SignUpButton mode="modal">
+              <Button className="p-4" >
+                Try voice chat
+              </Button>
+            </SignUpButton>
 
-          <div className="flex gap-4">
-            <SignInButton mode="modal">
-              <span>
-                <Button className="p-4" >
-                  <MicIcon />
-                  Try voice chat
-                </Button>
-              </span>
-            </SignInButton>
-
-            <SignInButton mode="modal">
-              <span>
-                <Button className="p-4" >
-                  <CalculatorIcon />
-                  Book appointment
-                </Button>
-              </span>
-            </SignInButton>
+            <SignUpButton mode="modal">
+              <Button className="p-4" >
+                Book appointment
+              </Button>
+            </SignUpButton>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-4">
