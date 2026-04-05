@@ -39,3 +39,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 Database -> postgresql(Neondb)
 Auth -> Clerk
 Voice-agent -> Vapi.ai
+Tailwind & chadecn -> styling & components

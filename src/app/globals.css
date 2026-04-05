@@ -1,3 +1,4 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css";
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
@@ -12,6 +13,7 @@
   --primary: #3a5ba0;
   --primary-foreground: #fffbe6;
   --secondary: #f7c873;
+  --boldtext: rgb(181, 127, 27);
   --secondary-foreground: #1a2238;
   --muted: #e5e5df;
   --muted-foreground: #3a5ba0;
@@ -71,6 +73,7 @@
   --muted: #1d1e2f;
   --muted-foreground: #7a88a1;
   --accent: #bccdf0;
+  --darkbg: #252525;
   --accent-foreground: #181a24;
   --destructive: #a04a6c;
   --destructive-foreground: #ffe066;
@@ -120,6 +123,7 @@
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
+  --color-boldtext: var(--boldtext);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
@@ -128,6 +132,7 @@
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
+  --colot-darkbg: var(--darkbg);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-chart-1: var(--chart-1);
