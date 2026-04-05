@@ -1,5 +1,8 @@
+import { SignInButton } from "@clerk/nextjs";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
+import { Button } from "../ui/button";
+import { ArrowRightCircle } from "lucide-react";
 
 function Guidance() {
   return (
@@ -57,6 +60,12 @@ function Guidance() {
           </div>
         </div>
       </div>
+
+      <SignInButton mode="modal">
+        <Button>
+          Get Started now
+        </Button>
+      </SignInButton>
     </section >
   );
 }
