@@ -36,7 +36,9 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 ## Used Stacks
-Database -> postgresql(Neondb)
-Auth -> Clerk
-Voice-agent -> Vapi.ai
-Tailwind & chadecn -> styling & components
+Postgresql(Neondb) -> Database
+Prisma -> ORM
+Clerk -> Auth
+Vapi.ai -> Voice-agent
+Tailwind -> styling 
+Chadecn -> ui components
