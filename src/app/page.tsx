@@ -5,7 +5,11 @@ import PromtinGuidance from '@/components/landing/PromtinGuidance';
 import Pricing from '@/components/landing/Pricing';
 import CTA from '@/components/landing/CTA';
 import Footer from '@/components/landing/Footer';
-export default function Home() {
+import { currentUser } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
+export default async function Home() {
+  const user = await currentUser();
+  //if (user) redirect("/dashboard"); //redirects authenticated user
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
