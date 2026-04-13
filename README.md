@@ -42,3 +42,4 @@ Clerk -> Auth
 Vapi.ai -> Voice-agent
 Tailwind -> styling 
 Chadecn -> ui components
+tanstack query -> data-fetching

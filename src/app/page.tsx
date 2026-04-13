@@ -9,7 +9,8 @@ import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 export default async function Home() {
   const user = await currentUser();
-  //if (user) redirect("/dashboard"); //redirects authenticated user
+  if (user) redirect("/dashboard"); // redirect authenticated users early
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />

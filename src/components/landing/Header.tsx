@@ -1,3 +1,5 @@
+"use client"
+
 import { Show, SignInButton, SignOutButton, SignUpButton, UserButton } from '@clerk/nextjs'
 import Image from "next/image"
 import Link from 'next/link'
@@ -26,8 +28,10 @@ function Header() {
               <Button variant="outline">Signup</Button>
             </SignUpButton>
           </Show>
+
+          
           <Show when="signed-in">
-            <SignOutButton>
+            <SignOutButton redirectUrl="/">
               <Button variant="destructive">Logout</Button>
             </SignOutButton>
             <UserButton />
