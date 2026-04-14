@@ -5,8 +5,8 @@ import { useUser } from '@clerk/nextjs'
 import { SettingsIcon } from 'lucide-react'
 import { UseGetDoctor } from '@/hooks/use-doctors'
 import { UseGetAppointments } from '@/hooks/use-appointments'
-import AdminDashboardInfo from "./AdminDashboardInfo"
-import Doctors from './Doctors'
+import AdminDashboardInfo from "../../components/admin/AdminDashboardInfo"
+import Doctors from '../../components/admin/Doctors'
 //fetch doctors, appointments ...
 export type StatesType = {
   totalDoctors: number,

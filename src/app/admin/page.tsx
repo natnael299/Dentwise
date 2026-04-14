@@ -1,7 +1,7 @@
 import { currentUser } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation";
 import AdminDashboard from "./AdminDashboard";
-import Doctors from "./Doctors";
+import Doctors from "../../components/admin/Doctors";
 async function AdminPage() {
   const user = await currentUser(); //GET current user
   if (!user) redirect("/dashboard");
