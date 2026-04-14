@@ -5,15 +5,20 @@ import { MailIcon, PenIcon, PhoneIcon, PlusIcon, Stethoscope } from "lucide-reac
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { useState } from "react";
+import { Doctor } from "@prisma/client";
 import AddDoctorDialog from "./AddDoctorDialog";
+import EditDoctorDialog from "./EditDoctorDialog";
 
 function Doctors() {
   const { data: Doctors } = UseGetDoctor();
   const [isAddDialogOpen, setIsAddDialogOpen] = useState<boolean>(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState<boolean>(false);
-  const [selectedDoctor, setSelectedDoctor] = useState<boolean>(false);
+  const [selectedDoctor, setSelectedDoctor] = useState<Doctor | null>(null);
 
-  const handleEditDialog = () => { setIsEditDialogOpen(true) }
+  const handleEditDialog = (doctor: Doctor) => {
+    setSelectedDoctor(doctor)
+    setIsEditDialogOpen(true)
+  }
   return (
     <>
       <Card className="mb-12">
@@ -64,7 +69,7 @@ function Doctors() {
                   Appointments
                 </div>
                 <Badge>{doctor.isActive ? "Active" : "Inactive"}</Badge>
-                <Button onClick={handleEditDialog}>
+                <Button onClick={() => handleEditDialog(doctor)}>
                   <PenIcon />
                   Edit
                 </Button>
@@ -75,7 +80,18 @@ function Doctors() {
         </CardContent>
       </Card >
 
-      <AddDoctorDialog open={isAddDialogOpen} onClose={() => setIsAddDialogOpen(false)} />
+      <AddDoctorDialog
+        open={isAddDialogOpen}
+        onClose={() => setIsAddDialogOpen(false)}
+      />
+
+      {selectedDoctor && (
+        <EditDoctorDialog
+          open={isEditDialogOpen}
+          onClose={() => setIsEditDialogOpen(false)}
+          doctor={selectedDoctor}
+        />
+      )}
     </>
   )
 }
