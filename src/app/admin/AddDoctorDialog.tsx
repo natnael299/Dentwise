@@ -5,6 +5,8 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 import { useState } from "react"
 import { Gender } from "@prisma/client"
+import { UseCreateDoctor } from "@/hooks/use-doctors"
+import { formatFinnishPhone } from "@/lib/utils"
 
 type AddDoctorDialogProp = {
   open: boolean
@@ -22,12 +24,34 @@ function AddDoctorDialog({ open, onClose }: AddDoctorDialogProp) {
     isActive: true
   })
 
+  const mutatedDoctorsInfo = UseCreateDoctor();
   //handle phone number
   const setPhoneNo = (num: string) => {
-    setNewDoctor({ ...newDoctor, phone: num });
+    const formatedNum = formatFinnishPhone(num);
+    setNewDoctor({ ...newDoctor, phone: formatedNum });
+  };
+
+  //handle saving doctor's info
+  const handleSave = () => {
+    mutatedDoctorsInfo.mutate(
+      { ...newDoctor }, { onSuccess: handleClose }
+    );
+  }
+
+  //close dialog & reset state
+  const handleClose = () => {
+    onClose();
+    setNewDoctor({
+      name: "",
+      email: "",
+      gender: "MALE" as Gender,
+      phone: "",
+      speciality: "",
+      isActive: true
+    });
   };
   return (
-    <Dialog open={open} onOpenChange={onClose}>
+    <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Add New Doctor</DialogTitle>
@@ -110,11 +134,16 @@ function AddDoctorDialog({ open, onClose }: AddDoctorDialogProp) {
         </div>
 
         <DialogFooter>
-          <Button variant="secondary">
+          <Button
+            variant="destructive"
+            onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="default">
-            Add Doctor
+          <Button
+            variant="default"
+            onClick={handleSave}
+            disabled={!newDoctor.name || !newDoctor.email || !newDoctor.phone || !newDoctor.speciality || mutatedDoctorsInfo.isPending}>
+            {mutatedDoctorsInfo.isPending ? "Adding..." : "Add Doctor"}
           </Button>
         </DialogFooter>
       </DialogContent>

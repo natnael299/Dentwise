@@ -1,4 +1,5 @@
 import { clsx, type ClassValue } from "clsx"
+import { use } from "react";
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
@@ -38,8 +39,7 @@ export function formatFinnishPhone(raw: string): string {
 //creat an avatar for the user based on the name & gender of the doctor
 export const generateAvatar = (name: string, gender: "MALE" | "FEMALE") => {
   const username = name.replace(/\s+/g, "").toLowerCase();
-  const base = "https://avatar.iran.liara.run/public";
-  if (gender === "FEMALE") return `${base}/girl?username=${username}`;
-  // default to boy
-  return `${base}/boy?username=${username}`;
-};
+  const base = "https://api.dicebear.com/9.x";
+  if (gender === "MALE") { return `${base}/adventurer/svg?seed=${username}` }
+  else { return `${base}/adventurer-neutral/svg?seed=${username}`; }
+}

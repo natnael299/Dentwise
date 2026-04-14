@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query"
 
 export function UseGetAppointments() {
   const appointments = useQuery({
-    queryKey: ["appointments"],
+    queryKey: ["fetchAppointments"],
     queryFn: fetchAppointments
   })
 

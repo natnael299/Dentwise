@@ -15,8 +15,7 @@ export default async function fecthAppointments() {
         },
         doctor: {
           select: {
-            firstname: true,
-            Lastname: true,
+            name: true,
             email: true,
             imageUrl: true
           }

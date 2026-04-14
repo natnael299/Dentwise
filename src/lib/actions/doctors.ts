@@ -2,6 +2,7 @@
 import { Gender } from "@prisma/client";
 import { prisma } from "../prisma"
 import { generateAvatar } from "../utils";
+import { revalidatePath } from "next/cache";
 export async function fetchDoctors() {
   try {
     //fetch every doctor & booked appointments
@@ -34,7 +35,14 @@ export async function createDoctors(inputs: doctorsProps) {
         imageUrl: generateAvatar(inputs.name, inputs.gender),
       }
     });
-  } catch (error) {
+    revalidatePath("/admin"); //refetch admin page info
+    return doctor;
+  } catch (error: any) {
     console.log("Error while creating doctors" + error);
+
+    if (error?.code == "P2002") {
+      throw new Error("Email already in use!!");
+    };
   }
+  throw new Error("Failed to create a new Doctor!!");
 }
