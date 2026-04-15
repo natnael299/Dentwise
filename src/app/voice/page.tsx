@@ -5,6 +5,7 @@ import { auth } from '@clerk/nextjs/server';
 import PaidPlanInvite from './PaidPlanInvite';
 import Features from './Features';
 import WelcomBanner from './WelcomBanner';
+import VapiVoiceAgent from './VapiVoiceAgent';
 
 async function Voice() {
   const user = currentUser();
@@ -21,6 +22,7 @@ async function Voice() {
       <WelcomBanner />
       <div className='mt-10'>
         <Features />
+        <VapiVoiceAgent />
       </div>
 
     </>
