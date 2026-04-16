@@ -194,5 +194,5 @@
 }
 
 .soundWave {
-  animation: sound-wave 1.25s ease-in-out infinite;
+  animation: sound-wave 0.5s linear infinite;
 }
