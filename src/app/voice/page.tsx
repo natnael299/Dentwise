@@ -2,10 +2,10 @@ import NavBarAdmin from '@/components/ui/NavBarAdmin'
 import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation';
 import { auth } from '@clerk/nextjs/server';
-import PaidPlanInvite from './PaidPlanInvite';
-import Features from './Features';
-import WelcomBanner from './WelcomBanner';
-import VapiVoiceAgent from './VapiVoiceAgent';
+import PaidPlanInvite from '../../components/voice/PaidPlanInvite';
+import Features from '../../components/voice/Features';
+import WelcomBanner from '../../components/voice/WelcomBanner';
+import VapiVoiceAgent from '../../components/voice/VapiVoiceAgent';
 
 async function Voice() {
   const user = currentUser();
