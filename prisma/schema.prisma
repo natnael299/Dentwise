@@ -46,6 +46,8 @@ model Doctor {
 model Appointment {
   id        String            @id @default(cuid())
   userId    String
+  date      DateTime
+  time      String
   doctorId  String
   duration  Int               @default(30)
   status    AppointmentStatus @default(CONFORMED)
